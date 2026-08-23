@@ -75,25 +75,25 @@
       </div>
 
       <!-- Desktop Nav & Offcanvas on Mobile -->
-      <div class="offcanvas offcanvas-end glass-offcanvas" tabindex="-1" id="navbarOffcanvas">
+      <div class="offcanvas-lg offcanvas-end glass-offcanvas" tabindex="-1" id="navbarOffcanvas">
         <div class="offcanvas-header border-bottom border-secondary border-opacity-25">
           <div class="d-flex align-items-center gap-2">
             <span class="brand-badge">&lt;AS/&gt;</span>
             <h5 class="offcanvas-title text-light mb-0">Ayush Saxena</h5>
           </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
-            <li class="nav-item"><a class="nav-link nav-link-custom active" href="#hero" data-bs-dismiss="offcanvas">Home</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#about" data-bs-dismiss="offcanvas">About</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience" data-bs-dismiss="offcanvas">Experience</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects" data-bs-dismiss="offcanvas">Projects</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills" data-bs-dismiss="offcanvas">Skills</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#education" data-bs-dismiss="offcanvas">Education</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#achievements" data-bs-dismiss="offcanvas">Certifications</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact" data-bs-dismiss="offcanvas">Contact</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom active" href="#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#education">Education</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#achievements">Certifications</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
           </ul>
 
           <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
@@ -199,8 +199,8 @@
             <div class="hero-avatar-card tilt-card">
               <div class="tilt-inner">
                 <div class="avatar-glow-ring">
-                  <div class="avatar-inner">
-                    <i class="bi bi-code-slash"></i>
+                  <div class="avatar-inner overflow-hidden">
+                    <img src="assets/profile.jpg" alt="Ayush Saxena Profile" class="hero-avatar-img">
                   </div>
                 </div>
                 <h4 class="text-light mb-1">Ayush Saxena</h4>
@@ -277,9 +277,15 @@
         <div class="col-lg-7">
           <div class="glass-card p-4 p-md-5 h-100 tilt-card">
             <div class="tilt-inner">
-              <h3 class="text-light mb-4 d-flex align-items-center gap-2">
-                <i class="bi bi-terminal-fill text-info"></i> Engineering Profile
-              </h3>
+              <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+                <img src="assets/profile.jpg" alt="Ayush Saxena" class="about-profile-thumb">
+                <div>
+                  <h3 class="text-light mb-1 d-flex align-items-center gap-2">
+                    Ayush Saxena <span class="badge-glow fs-6 py-1 px-2"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                  </h3>
+                  <p class="text-info font-code small mb-0">B.Tech CSE (AI &amp; ML) | Python &amp; Django Developer</p>
+                </div>
+              </div>
               <p class="text-secondary mb-3">
                 I am a pre-final year <strong>Bachelor of Technology in Computer Science &amp; Engineering (Artificial Intelligence &amp; Machine Learning)</strong> student at <strong>Dronacharya Group of Institutions (AKTU)</strong>, Greater Noida.
               </p>
