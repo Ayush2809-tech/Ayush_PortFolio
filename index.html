@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayush Saxena | B.Tech CSE (AI & ML) | Python & Django Developer</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Ayush Saxena - B.Tech CSE (AI & ML) student, Python & Django Developer, experienced in building production web applications, PostgreSQL, Cloudinary, and DSA.">
+  <meta name="keywords" content="Ayush Saxena, Python Developer, Django Developer, Full Stack Developer, AI ML, Portfolio, Dronacharya Group of Institutions, Softpro India">
+  <meta name="author" content="Ayush Saxena">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Ayush Saxena | Python & Django Developer Portfolio">
+  <meta property="og:description" content="Pre-final year B.Tech CSE (AI & ML) developer portfolio featuring production projects Aurelix and Biotech Park Admission System.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Design System CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Three.js 3D Background Canvas -->
+  <div id="three-canvas-container"></div>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="ambient-glow-blob blob-1"></div>
+  <div class="ambient-glow-blob blob-2"></div>
+  <div class="ambient-glow-blob blob-3"></div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="main-nav">
+    <div class="container">
+      <a class="brand-logo" href="#hero">
+        <span class="brand-badge">&lt;AS/&gt;</span>
+        <span>Ayush<span class="text-gradient">.dev</span></span>
+      </a>
+
+      <!-- Controls on right for mobile -->
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button class="audio-toggle-btn" id="audio-toggle-btn-mobile" title="Toggle Sound FX" onclick="document.getElementById('audio-toggle-btn').click()">
+          <i class="bi bi-volume-mute-fill"></i>
+        </button>
+        <button class="navbar-toggler border-0 text-light shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Toggle navigation">
+          <i class="bi bi-list fs-2 text-info"></i>
+        </button>
+      </div>
+
+      <!-- Desktop Nav & Offcanvas on Mobile -->
+      <div class="offcanvas offcanvas-end glass-offcanvas" tabindex="-1" id="navbarOffcanvas">
+        <div class="offcanvas-header border-bottom border-secondary border-opacity-25">
+          <div class="d-flex align-items-center gap-2">
+            <span class="brand-badge">&lt;AS/&gt;</span>
+            <h5 class="offcanvas-title text-light mb-0">Ayush Saxena</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+            <li class="nav-item"><a class="nav-link nav-link-custom active" href="#hero" data-bs-dismiss="offcanvas">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#about" data-bs-dismiss="offcanvas">About</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience" data-bs-dismiss="offcanvas">Experience</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects" data-bs-dismiss="offcanvas">Projects</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills" data-bs-dismiss="offcanvas">Skills</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#education" data-bs-dismiss="offcanvas">Education</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#achievements" data-bs-dismiss="offcanvas">Certifications</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact" data-bs-dismiss="offcanvas">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <!-- Theme Glow Dots -->
+            <div class="theme-selector" title="Choose Glow Accent">
+              <div class="theme-dot dot-cyan active" data-theme="cyan" title="Cyber Cyan"></div>
+              <div class="theme-dot dot-purple" data-theme="purple" title="Neon Purple"></div>
+              <div class="theme-dot dot-emerald" data-theme="emerald" title="Matrix Emerald"></div>
+            </div>
+
+            <!-- Audio FX Toggle -->
+            <button class="audio-toggle-btn d-none d-lg-flex" id="audio-toggle-btn" title="Toggle Sound FX">
+              <i class="bi bi-volume-mute-fill"></i>
+            </button>
+
+            <!-- Resume Button -->
+            <button class="btn-glow-primary py-2 px-3 fs-6" data-bs-toggle="modal" data-bs-target="#resumeModal">
+              <i class="bi bi-file-earmark-person-fill"></i> Resume
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <!-- Status Pill -->
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span>Open for Developer Opportunities & Collaborations</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="text-gradient">Ayush Saxena</span>
+          </h1>
+
+          <div class="typed-role-container">
+            <span>&gt;&nbsp;</span>
+            <span class="typed-role" id="typed-role-text">Python & Django Developer</span>
+          </div>
+
+          <p class="hero-description">
+            Pre-final year <strong>B.Tech CSE (AI &amp; ML)</strong> engineer passionate about architecting secure, scalable web applications with <strong>Python &amp; Django</strong>, mastering <strong>Data Structures &amp; Algorithms</strong> in Java, and deploying production-ready platforms.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 hero-cta-group mb-4">
+            <a href="#projects" class="btn-glow-primary">
+              <span>View Projects</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn-glass-secondary">
+              <i class="bi bi-chat-dots-fill text-info"></i>
+              <span>Get in Touch</span>
+            </a>
+            <button class="btn-glass-secondary" data-bs-toggle="modal" data-bs-target="#resumeModal">
+              <i class="bi bi-eye-fill text-warning"></i>
+              <span>Preview Resume</span>
+            </button>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted small me-2 font-code">CONNECT:</span>
+            <a href="https://github.com/Ayush2809-tech" target="_blank" rel="noopener noreferrer" class="btn-icon-glass" title="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ayush-saxena-2809s/" target="_blank" rel="noopener noreferrer" class="btn-icon-glass" title="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://leetcode.com/u/Ayush2815" target="_blank" rel="noopener noreferrer" class="btn-icon-glass" title="LeetCode">
+              <i class="fa-solid fa-code"></i>
+            </a>
+            <a href="mailto:saxenaayush2809@gmail.com" class="btn-icon-glass" title="Email Ayush">
+              <i class="bi bi-envelope-fill"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Hero Visual Card -->
+        <div class="col-lg-5">
+          <div class="hero-3d-wrapper">
+            <!-- Floating badges -->
+            <div class="floating-chip chip-python">
+              <i class="fa-brands fa-python"></i> Python 3.x
+            </div>
+            <div class="floating-chip chip-django">
+              <i class="bi bi-shield-check"></i> Django Web
+            </div>
+            <div class="floating-chip chip-aiml">
+              <i class="bi bi-cpu-fill"></i> AI & ML CSE
+            </div>
+            <div class="floating-chip chip-dsa">
+              <i class="bi bi-diagram-3-fill"></i> Java & DSA
+            </div>
+
+            <!-- Avatar card -->
+            <div class="hero-avatar-card tilt-card">
+              <div class="tilt-inner">
+                <div class="avatar-glow-ring">
+                  <div class="avatar-inner">
+                    <i class="bi bi-code-slash"></i>
+                  </div>
+                </div>
+                <h4 class="text-light mb-1">Ayush Saxena</h4>
+                <p class="text-info font-code small mb-3">@Ayush2809-tech</p>
+                <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+                  <span class="badge-glow"><i class="bi bi-geo-alt-fill"></i> Greater Noida, India</span>
+                  <span class="badge-glow"><i class="bi bi-mortarboard-fill"></i> AKTU 2024-28</span>
+                </div>
+                <p class="text-secondary small mb-0">
+                  Building full-stack web architectures, optimizing database pipelines, and deploying robust cloud applications.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Quick Metrics Bar -->
+      <div class="glass-card stats-container">
+        <div class="row g-4 text-center text-md-start">
+          <div class="col-6 col-md-3">
+            <div class="stat-item justify-content-center justify-content-md-start">
+              <div class="stat-icon"><i class="bi bi-award-fill"></i></div>
+              <div>
+                <h3 class="stat-number text-gradient">A++</h3>
+                <p class="stat-label">Internship Grade</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item justify-content-center justify-content-md-start">
+              <div class="stat-icon"><i class="bi bi-trophy-fill text-warning"></i></div>
+              <div>
+                <h3 class="stat-number text-gradient">Top 1K</h3>
+                <p class="stat-label">Vibe Hacks 2026</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item justify-content-center justify-content-md-start">
+              <div class="stat-icon"><i class="bi bi-graph-up-arrow text-success"></i></div>
+              <div>
+                <h3 class="stat-number text-gradient">8.03</h3>
+                <p class="stat-label">B.Tech CGPA (AKTU)</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item justify-content-center justify-content-md-start">
+              <div class="stat-icon"><i class="bi bi-cloud-check-fill text-info"></i></div>
+              <div>
+                <h3 class="stat-number text-gradient">2+</h3>
+                <p class="stat-label">Production Apps</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-person-lines-fill"></i> Background</div>
+        <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+        <p class="section-subtitle">A deep dive into my academic journey, software engineering focus, and passion for building resilient systems.</p>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          <div class="glass-card p-4 p-md-5 h-100 tilt-card">
+            <div class="tilt-inner">
+              <h3 class="text-light mb-4 d-flex align-items-center gap-2">
+                <i class="bi bi-terminal-fill text-info"></i> Engineering Profile
+              </h3>
+              <p class="text-secondary mb-3">
+                I am a pre-final year <strong>Bachelor of Technology in Computer Science &amp; Engineering (Artificial Intelligence &amp; Machine Learning)</strong> student at <strong>Dronacharya Group of Institutions (AKTU)</strong>, Greater Noida.
+              </p>
+              <p class="text-secondary mb-3">
+                My primary focus revolves around <strong>Python and Django full-stack web development</strong>, designing scalable backend systems, database modeling (PostgreSQL/SQL), and cloud deployments on platforms like Render, GitHub Pages, and Netlify.
+              </p>
+              <p class="text-secondary mb-4">
+                Alongside web engineering, I continuously sharpen my analytical and problem-solving abilities through <strong>Data Structures &amp; Algorithms in Java</strong> and explore practical <strong>AI/ML paradigms</strong>.
+              </p>
+
+              <div class="row g-3 pt-3 border-top border-secondary border-opacity-25">
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2 text-light">
+                    <i class="bi bi-geo-alt text-info"></i>
+                    <span class="small">Greater Noida, UP, India</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2 text-light">
+                    <i class="bi bi-envelope text-info"></i>
+                    <span class="small">saxenaayush2809@gmail.com</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2 text-light">
+                    <i class="bi bi-telephone text-info"></i>
+                    <span class="small">+91 9528055151</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-2 text-light">
+                    <i class="bi bi-translate text-info"></i>
+                    <span class="small">English, Hindi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Coding Profiles & Highlights -->
+        <div class="col-lg-5">
+          <div class="glass-card p-4 p-md-5 h-100">
+            <h4 class="text-light mb-4"><i class="bi bi-lightning-charge-fill text-warning me-2"></i>Coding &amp; Profiles</h4>
+            
+            <!-- LeetCode Profile Card -->
+            <a href="https://leetcode.com/u/Ayush2815" target="_blank" rel="noopener noreferrer" class="coding-profile-card">
+              <div class="profile-info">
+                <div class="profile-icon icon-leetcode">
+                  <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                  <h6 class="text-light mb-0">LeetCode</h6>
+                  <span class="text-muted small">@Ayush2815</span>
+                </div>
+              </div>
+              <span class="badge-pill-tech"><i class="bi bi-box-arrow-up-right"></i> Problem Solving</span>
+            </a>
+
+            <!-- GitHub Profile Card -->
+            <a href="https://github.com/Ayush2809-tech" target="_blank" rel="noopener noreferrer" class="coding-profile-card">
+              <div class="profile-info">
+                <div class="profile-icon icon-github">
+                  <i class="bi bi-github"></i>
+                </div>
+                <div>
+                  <h6 class="text-light mb-0">GitHub</h6>
+                  <span class="text-muted small">@Ayush2809-tech</span>
+                </div>
+              </div>
+              <span class="badge-pill-tech"><i class="bi bi-git"></i> Repositories</span>
+            </a>
+
+            <!-- LinkedIn Profile Card -->
+            <a href="https://www.linkedin.com/in/ayush-saxena-2809s/" target="_blank" rel="noopener noreferrer" class="coding-profile-card">
+              <div class="profile-info">
+                <div class="profile-icon icon-linkedin">
+                  <i class="bi bi-linkedin"></i>
+                </div>
+                <div>
+                  <h6 class="text-light mb-0">LinkedIn</h6>
+                  <span class="text-muted small">ayush-saxena-2809s</span>
+                </div>
+              </div>
+              <span class="badge-pill-tech"><i class="bi bi-person-badge"></i> Network</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EXPERIENCE / INTERNSHIP SECTION
+       ========================================================================== */
+  -->
+  <section class="section-padding" id="experience">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-briefcase-fill"></i> Experience</div>
+        <h2 class="section-title">Industry <span class="text-gradient">Internship</span></h2>
+        <p class="section-subtitle">Real-world client project execution and full-stack software development experience.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="timeline-container">
+            
+            <!-- Timeline Item: Softpro India Internship -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="glass-card timeline-card tilt-card">
+                <div class="tilt-inner">
+                  <div class="timeline-header">
+                    <div>
+                      <h4 class="timeline-role">Software Development Intern</h4>
+                      <div class="timeline-company">
+                        <i class="bi bi-building"></i>
+                        <span>Softpro India Computer Technologies Pvt. Ltd., Lucknow (On-site)</span>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                      <span class="timeline-badge-grade"><i class="bi bi-star-fill me-1"></i> A++ Grade</span>
+                      <span class="timeline-period"><i class="bi bi-calendar3"></i> Jun 2026 – Jul 2026</span>
+                    </div>
+                  </div>
+
+                  <ul class="timeline-list">
+                    <li>Completed an intensive <strong>45-day Summer Internship</strong> in Python with Django, achieving the highest performance rating (<strong>A++ Grade</strong>).</li>
+                    <li>Developed the production <strong>Online Admission System for Biotech Park, Lucknow</strong>, collaborating closely with the Software Development &amp; Testing Division.</li>
+                    <li>Implemented full-lifecycle features including candidate registration, document upload pipelines, course allotment algorithms, fee/payment tracking, and role-based administrative dashboards.</li>
+                    <li>Awarded the prestigious <strong>Best Speaker Award (2026)</strong> by Softpro India in recognition of outstanding technical presentation and team communication.</li>
+                  </ul>
+
+                  <div class="d-flex flex-wrap gap-2 pt-2 border-top border-secondary border-opacity-25 align-items-center justify-content-between">
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="badge-pill-tech"><i class="fa-brands fa-python"></i> Python</span>
+                      <span class="badge-pill-tech"><i class="bi bi-gear-wide-connected"></i> Django</span>
+                      <span class="badge-pill-tech"><i class="bi bi-database"></i> SQL Database</span>
+                      <span class="badge-pill-tech"><i class="bi bi-bootstrap"></i> Bootstrap</span>
+                      <span class="badge-pill-tech"><i class="bi bi-check2-circle"></i> Software Testing</span>
+                    </div>
+                    <a href="https://github.com/Ayush2809-tech/BTech-Park-Admission-System" target="_blank" rel="noopener noreferrer" class="btn-glass-secondary py-1 px-3 fs-6">
+                      <i class="bi bi-github"></i> Repository
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PROJECTS SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="projects">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-code-square"></i> Portfolio Showcase</div>
+        <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+        <p class="section-subtitle">Production-grade web applications engineered with modern backend frameworks and cloud infrastructure.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="fullstack">Full Stack / Django</button>
+        <button class="filter-btn" data-filter="database">PostgreSQL &amp; Cloud</button>
+      </div>
+
+      <div class="row g-4">
+        <!-- Project 1: Aurelix -->
+        <div class="col-lg-6 project-item-col" data-category="fullstack database">
+          <div class="glass-card project-card tilt-card">
+            <div class="project-header-banner">
+              <div class="project-banner-pattern"></div>
+              <i class="bi bi-mortarboard-fill project-icon-large"></i>
+              <div class="project-badge-float">
+                <span class="badge-glow"><i class="bi bi-cloud-check-fill"></i> Live on Render</span>
+              </div>
+            </div>
+
+            <div class="project-body tilt-inner">
+              <h4 class="project-title">1. Aurelix – Student Management System</h4>
+              <p class="project-desc">
+                Developed and production-deployed a full-scale Django Student Management System equipped with role-based access control for school owners, teachers, and administrators. Features automated student/class record tracking, secure session authentication, and transactional email alerts.
+              </p>
+
+              <div class="project-tags">
+                <span class="badge-pill-tech">Python</span>
+                <span class="badge-pill-tech">Django</span>
+                <span class="badge-pill-tech">PostgreSQL</span>
+                <span class="badge-pill-tech">Cloudinary</span>
+                <span class="badge-pill-tech">Brevo Email</span>
+                <span class="badge-pill-tech">Excel I/O</span>
+                <span class="badge-pill-tech">Render Deploy</span>
+                <span class="badge-pill-tech">SEO Config</span>
+              </div>
+
+              <div class="project-footer">
+                <a href="https://aurelix-9q4e.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-glow-primary py-2 px-3 fs-6">
+                  <i class="bi bi-box-arrow-up-right"></i> Live Demo
+                </a>
+                <a href="https://github.com/Ayush2809-tech/Aurelix" target="_blank" rel="noopener noreferrer" class="btn-glass-secondary py-2 px-3 fs-6">
+                  <i class="bi bi-github"></i> GitHub
+                </a>
+                <button class="btn-glass-secondary py-2 px-3 fs-6 ms-auto" onclick="openProjectDetails('aurelix')">
+                  <i class="bi bi-info-circle-fill"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Biotech Park Online Admission System -->
+        <div class="col-lg-6 project-item-col" data-category="fullstack">
+          <div class="glass-card project-card tilt-card">
+            <div class="project-header-banner" style="background: linear-gradient(135deg, #06282d 0%, #134e4a 100%);">
+              <div class="project-banner-pattern"></div>
+              <i class="bi bi-building-check project-icon-large text-emerald" style="color: #10b981;"></i>
+              <div class="project-badge-float">
+                <span class="badge-glow" style="color: #10b981; border-color: rgba(16,185,129,0.3);"><i class="bi bi-briefcase-fill"></i> Softpro Client App</span>
+              </div>
+            </div>
+
+            <div class="project-body tilt-inner">
+              <h4 class="project-title">2. Online Admission System – Biotech Park, Lucknow</h4>
+              <p class="project-desc">
+                Engineered an end-to-end online admission workflow system for Biotech Park Lucknow as part of the 45-day Summer Internship at Softpro India. Built student registration pipelines, secure document verification modules, course enrollment filters, and comprehensive fee/installment management.
+              </p>
+
+              <div class="project-tags">
+                <span class="badge-pill-tech">Python</span>
+                <span class="badge-pill-tech">Django</span>
+                <span class="badge-pill-tech">SQL / DB</span>
+                <span class="badge-pill-tech">Bootstrap 5</span>
+                <span class="badge-pill-tech">Doc Verification</span>
+                <span class="badge-pill-tech">Payment Tracking</span>
+                <span class="badge-pill-tech">Admin Portal</span>
+              </div>
+
+              <div class="project-footer">
+                <a href="https://github.com/Ayush2809-tech/BTech-Park-Admission-System" target="_blank" rel="noopener noreferrer" class="btn-glow-primary py-2 px-3 fs-6">
+                  <i class="bi bi-github"></i> GitHub Repo
+                </a>
+                <button class="btn-glass-secondary py-2 px-3 fs-6 ms-auto" onclick="openProjectDetails('admission')">
+                  <i class="bi bi-info-circle-fill"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL SKILLS SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="skills">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-tools"></i> Key Expertise</div>
+        <h2 class="section-title">Technical <span class="text-gradient">Skills</span></h2>
+        <p class="section-subtitle">Proficiencies in programming languages, frameworks, developer tools, and core computer science fundamentals.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1: Programming Languages -->
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card tilt-card">
+            <div class="tilt-inner">
+              <div class="skill-card-icon">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <h4 class="skill-category-title">Languages</h4>
+              <div class="skill-tags-grid">
+                <span class="skill-badge-item"><i class="fa-brands fa-python"></i> Python</span>
+                <span class="skill-badge-item"><i class="fa-brands fa-java"></i> Java</span>
+                <span class="skill-badge-item"><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span class="skill-badge-item"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="skill-badge-item"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="skill-badge-item"><i class="bi bi-database-fill"></i> SQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Frameworks & Web -->
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card tilt-card">
+            <div class="tilt-inner">
+              <div class="skill-card-icon" style="color: #4ade80;">
+                <i class="bi bi-layers-fill"></i>
+              </div>
+              <h4 class="skill-category-title">Frameworks &amp; Web</h4>
+              <div class="skill-tags-grid">
+                <span class="skill-badge-item"><i class="bi bi-shield-check"></i> Django</span>
+                <span class="skill-badge-item"><i class="fa-brands fa-bootstrap"></i> Bootstrap 5</span>
+                <span class="skill-badge-item"><i class="bi bi-arrow-repeat"></i> RESTful APIs</span>
+                <span class="skill-badge-item"><i class="bi bi-window-sidebar"></i> Responsive UI</span>
+                <span class="skill-badge-item"><i class="bi bi-palette"></i> Glassmorphism</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Developer Tools -->
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card tilt-card">
+            <div class="tilt-inner">
+              <div class="skill-card-icon" style="color: #fbbf24;">
+                <i class="bi bi-terminal-fill"></i>
+              </div>
+              <h4 class="skill-category-title">Developer Tools</h4>
+              <div class="skill-tags-grid">
+                <span class="skill-badge-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+                <span class="skill-badge-item"><i class="fa-brands fa-github"></i> GitHub</span>
+                <span class="skill-badge-item"><i class="bi bi-laptop"></i> VS Code</span>
+                <span class="skill-badge-item"><i class="bi bi-send-check"></i> Postman</span>
+                <span class="skill-badge-item"><i class="bi bi-command"></i> CLI &amp; Terminal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Cloud & Deployment Platforms -->
+        <div class="col-md-6 col-lg-6">
+          <div class="glass-card skill-card tilt-card">
+            <div class="tilt-inner">
+              <div class="skill-card-icon" style="color: #38bdf8;">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+              </div>
+              <h4 class="skill-category-title">Platforms &amp; Cloud Services</h4>
+              <div class="skill-tags-grid">
+                <span class="skill-badge-item"><i class="bi bi-hdd-network-fill"></i> Render</span>
+                <span class="skill-badge-item"><i class="bi bi-github"></i> GitHub Pages</span>
+                <span class="skill-badge-item"><i class="bi bi-globe"></i> Netlify</span>
+                <span class="skill-badge-item"><i class="bi bi-database-gear"></i> PostgreSQL</span>
+                <span class="skill-badge-item"><i class="bi bi-images"></i> Cloudinary Media</span>
+                <span class="skill-badge-item"><i class="bi bi-envelope-at-fill"></i> Brevo (Sendinblue)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Core Engineering Disciplines -->
+        <div class="col-md-6 col-lg-6">
+          <div class="glass-card skill-card tilt-card">
+            <div class="tilt-inner">
+              <div class="skill-card-icon" style="color: #c084fc;">
+                <i class="bi bi-diagram-3-fill"></i>
+              </div>
+              <h4 class="skill-category-title">Core Computer Science Areas</h4>
+              <div class="skill-tags-grid">
+                <span class="skill-badge-item"><i class="bi bi-cpu-fill"></i> Data Structures &amp; Algorithms</span>
+                <span class="skill-badge-item"><i class="bi bi-robot"></i> AI / ML Fundamentals</span>
+                <span class="skill-badge-item"><i class="bi bi-table"></i> Database Management (DBMS)</span>
+                <span class="skill-badge-item"><i class="bi bi-browser-chrome"></i> Web Development</span>
+                <span class="skill-badge-item"><i class="bi bi-file-earmark-spreadsheet"></i> Excel Bulk I/O Pipelines</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDUCATION & LEADERSHIP SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="education">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-mortarboard-fill"></i> Academics &amp; Roles</div>
+        <h2 class="section-title">Education &amp; <span class="text-gradient">Leadership</span></h2>
+        <p class="section-subtitle">Academic milestones, technical university credentials, and co-curricular leadership.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Education 1: B.Tech -->
+        <div class="col-lg-4">
+          <div class="glass-card edu-card tilt-card">
+            <div class="tilt-inner">
+              <span class="edu-year">2024 – 2028</span>
+              <h4 class="edu-degree">Bachelor of Technology (B.Tech)</h4>
+              <p class="text-info font-code small mb-2">Computer Science &amp; Engineering (AI &amp; ML)</p>
+              <p class="edu-institution">
+                <strong>Dronacharya Group of Institutions</strong><br>
+                Dr. A. P. J. Abdul Kalam Technical University (AKTU), Lucknow<br>
+                <span class="text-muted small"><i class="bi bi-geo-alt"></i> Greater Noida, UP, India</span>
+              </p>
+              <div class="edu-grade">
+                <i class="bi bi-award-fill"></i> CGPA: 8.03 / 10
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education 2: 12th Grade -->
+        <div class="col-lg-4">
+          <div class="glass-card edu-card tilt-card">
+            <div class="tilt-inner">
+              <span class="edu-year">2023</span>
+              <h4 class="edu-degree">Senior Secondary (Grade 12th)</h4>
+              <p class="text-info font-code small mb-2">Science &amp; Mathematics Stream</p>
+              <p class="edu-institution">
+                <strong>Saraswati Vidya Mandir Inter College</strong><br>
+                UP Board<br>
+                <span class="text-muted small"><i class="bi bi-geo-alt"></i> Aligarh, UP, India</span>
+              </p>
+              <div class="edu-grade">
+                <i class="bi bi-check-circle-fill"></i> Score: 81.2%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education 3: 10th Grade -->
+        <div class="col-lg-4">
+          <div class="glass-card edu-card tilt-card">
+            <div class="tilt-inner">
+              <span class="edu-year">2021</span>
+              <h4 class="edu-degree">Secondary (Grade 10th)</h4>
+              <p class="text-info font-code small mb-2">High School Certificate</p>
+              <p class="edu-institution">
+                <strong>Saraswati Vidya Mandir Inter College</strong><br>
+                UP Board<br>
+                <span class="text-muted small"><i class="bi bi-geo-alt"></i> Aligarh, UP, India</span>
+              </p>
+              <div class="edu-grade">
+                <i class="bi bi-star-fill"></i> Score: 90.5%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leadership Highlight Banner -->
+        <div class="col-12 mt-4">
+          <div class="glass-card p-4 p-md-5 tilt-card">
+            <div class="tilt-inner row align-items-center g-4">
+              <div class="col-md-2 text-center">
+                <div class="stat-icon mx-auto" style="width: 70px; height: 70px; font-size: 2rem; color: #a855f7;">
+                  <i class="bi bi-people-fill"></i>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge-glow"><i class="bi bi-flag-fill"></i> Leadership Experience</span>
+                  <span class="text-muted small font-code">Aarohan Coding Club</span>
+                </div>
+                <h4 class="text-light mb-2">Social Media Co-Head | Aarohan Coding Club</h4>
+                <p class="text-secondary mb-0">
+                  Served as Social Media Co-Head of the college’s flagship coding club, contributing to the planning, promotion, and brand execution of high-impact technical activities, hackathons, coding workshops, and campus-wide developer initiatives.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ACHIEVEMENTS & CERTIFICATIONS SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="achievements">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-trophy-fill"></i> Honors &amp; Credentials</div>
+        <h2 class="section-title">Achievements &amp; <span class="text-gradient">Certifications</span></h2>
+        <p class="section-subtitle">Recognitions of competitive excellence and certified technical proficiencies.</p>
+      </div>
+
+      <!-- Achievements Row -->
+      <h4 class="text-light mb-4"><i class="bi bi-star-fill text-warning me-2"></i>Key Achievements</h4>
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <div class="glass-card achievement-card tilt-card">
+            <div class="achievement-icon-box">
+              <i class="bi bi-mic-fill"></i>
+            </div>
+            <div class="tilt-inner">
+              <span class="badge-glow mb-2">2026 Award</span>
+              <h5 class="text-light mb-1">Best Speaker Award</h5>
+              <p class="text-info font-code small mb-2">Softpro India Computer Technologies Pvt. Ltd.</p>
+              <p class="text-secondary small mb-0">
+                Recognized for exceptional technical presentation, project communication, and leadership during the Summer Internship program.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass-card achievement-card tilt-card">
+            <div class="achievement-icon-box" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(185, 28, 28, 0.1) 100%); border-color: rgba(239, 68, 68, 0.3); color: #f87171;">
+              <i class="bi bi-trophy-fill"></i>
+            </div>
+            <div class="tilt-inner">
+              <span class="badge-glow mb-2" style="color: #f87171; border-color: rgba(239, 68, 68, 0.3);">Hackathon 2026</span>
+              <h5 class="text-light mb-1">Top 1,000 Teams | Vibe Hacks</h5>
+              <p class="text-info font-code small mb-2">HackWithIndia 2026</p>
+              <p class="text-secondary small mb-0">
+                Successfully ranked among the top 1,000 teams nationwide out of 3,000+ participating teams in a competitive software hackathon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications Row -->
+      <h4 class="text-light mb-4"><i class="bi bi-patch-check-fill text-info me-2"></i>Verified Certifications</h4>
+      <div class="row g-4">
+        <!-- Cert 1 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card achievement-card p-4 tilt-card flex-column">
+            <div class="cert-icon-box p-3 rounded-3 mb-3">
+              <i class="fa-brands fa-python fs-3"></i>
+            </div>
+            <div class="tilt-inner">
+              <span class="edu-year mb-2">2026 | A++ Grade</span>
+              <h6 class="text-light mb-1">Python with Django</h6>
+              <p class="text-muted small mb-0">Softpro India Computer Technologies Pvt. Ltd.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card achievement-card p-4 tilt-card flex-column">
+            <div class="cert-icon-box p-3 rounded-3 mb-3">
+              <i class="bi bi-code-slash fs-3"></i>
+            </div>
+            <div class="tilt-inner">
+              <span class="edu-year mb-2">2025</span>
+              <h6 class="text-light mb-1">Python Programming</h6>
+              <p class="text-muted small mb-0">EdLernity</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card achievement-card p-4 tilt-card flex-column">
+            <div class="cert-icon-box p-3 rounded-3 mb-3">
+              <i class="bi bi-robot fs-3"></i>
+            </div>
+            <div class="tilt-inner">
+              <span class="edu-year mb-2">2025</span>
+              <h6 class="text-light mb-1">Basics of ChatGPT</h6>
+              <p class="text-muted small mb-0">EdLernity</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card achievement-card p-4 tilt-card flex-column">
+            <div class="cert-icon-box p-3 rounded-3 mb-3">
+              <i class="bi bi-diagram-3-fill fs-3"></i>
+            </div>
+            <div class="tilt-inner">
+              <span class="edu-year mb-2">2025</span>
+              <h6 class="text-light mb-1">Basics of DSA</h6>
+              <p class="text-muted small mb-0">Data Structures &amp; Algorithms</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-tag"><i class="bi bi-chat-right-dots-fill"></i> Get in Touch</div>
+        <h2 class="section-title">Contact <span class="text-gradient">Ayush</span></h2>
+        <p class="section-subtitle">Interested in collaborating on a web project, internship, or full-time opportunity? Let's connect!</p>
+      </div>
+
+      <div class="row g-5 align-items-stretch">
+        <!-- Contact Info Cards -->
+        <div class="col-lg-5">
+          <!-- Email Card -->
+          <div class="glass-card contact-info-card tilt-card">
+            <div class="contact-icon-wrapper">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+            <div>
+              <div class="contact-label">Email Address</div>
+              <p class="contact-value">saxenaayush2809@gmail.com</p>
+            </div>
+            <button class="copy-btn" data-copy="saxenaayush2809@gmail.com" title="Copy Email">
+              <i class="bi bi-clipboard"></i>
+            </button>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="glass-card contact-info-card tilt-card">
+            <div class="contact-icon-wrapper">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div>
+              <div class="contact-label">Phone Number</div>
+              <p class="contact-value">+91 9528055151</p>
+            </div>
+            <button class="copy-btn" data-copy="+919528055151" title="Copy Phone">
+              <i class="bi bi-clipboard"></i>
+            </button>
+          </div>
+
+          <!-- Location Card -->
+          <div class="glass-card contact-info-card tilt-card">
+            <div class="contact-icon-wrapper">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div>
+              <div class="contact-label">Location</div>
+              <p class="contact-value">Greater Noida, UP, India</p>
+            </div>
+          </div>
+
+          <!-- Social Matrix -->
+          <div class="glass-card p-4 mt-4">
+            <h6 class="text-light mb-3 font-code"><i class="bi bi-share-fill text-info me-2"></i>Social Profiles</h6>
+            <div class="d-flex gap-2">
+              <a href="https://www.linkedin.com/in/ayush-saxena-2809s/" target="_blank" rel="noopener noreferrer" class="btn-glass-secondary flex-grow-1 justify-content-center py-2">
+                <i class="bi bi-linkedin text-info"></i> LinkedIn
+              </a>
+              <a href="https://github.com/Ayush2809-tech" target="_blank" rel="noopener noreferrer" class="btn-glass-secondary flex-grow-1 justify-content-center py-2">
+                <i class="bi bi-github"></i> GitHub
+              </a>
+              <a href="https://leetcode.com/u/Ayush2815" target="_blank" rel="noopener noreferrer" class="btn-glass-secondary flex-grow-1 justify-content-center py-2">
+                <i class="fa-solid fa-code text-warning"></i> LeetCode
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="form-glass h-100">
+            <h4 class="text-light mb-4 d-flex align-items-center gap-2">
+              <i class="bi bi-send-fill text-info"></i> Send a Direct Message
+            </h4>
+            <form id="contact-form">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="sender-name" class="form-label text-secondary small font-code">YOUR NAME *</label>
+                  <input type="text" class="form-control form-control-glass" id="sender-name" placeholder="John Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="sender-email" class="form-label text-secondary small font-code">YOUR EMAIL *</label>
+                  <input type="email" class="form-control form-control-glass" id="sender-email" placeholder="john@example.com" required>
+                </div>
+                <div class="col-12">
+                  <label for="sender-subject" class="form-label text-secondary small font-code">SUBJECT</label>
+                  <input type="text" class="form-control form-control-glass" id="sender-subject" placeholder="Project collaboration / Opportunity inquiry">
+                </div>
+                <div class="col-12">
+                  <label for="sender-message" class="form-label text-secondary small font-code">MESSAGE *</label>
+                  <textarea class="form-control form-control-glass" id="sender-message" rows="5" placeholder="Hi Ayush, I came across your portfolio and would like to discuss..." required></textarea>
+                </div>
+                <div class="col-12 pt-2">
+                  <button type="submit" class="btn-glow-primary w-100 justify-content-center py-3" id="contact-submit-btn">
+                    <i class="bi bi-send-fill"></i> Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6 text-center text-md-start">
+          <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-2">
+            <span class="brand-badge">&lt;AS/&gt;</span>
+            <span class="fs-5 fw-bold text-light">Ayush Saxena</span>
+          </div>
+          <p class="text-secondary small mb-0">
+            B.Tech CSE (AI &amp; ML) | Python &amp; Django Developer. Built with modern 3D Glassmorphism &amp; Bootstrap.
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end gap-2 mb-3">
+            <a href="https://github.com/Ayush2809-tech" target="_blank" rel="noopener noreferrer" class="btn-icon-glass" title="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/ayush-saxena-2809s/" target="_blank" rel="noopener noreferrer" class="btn-icon-glass" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://leetcode.com/u/Ayush2815" target="_blank" rel="noopener noreferrer" class="btn-icon-glass" title="LeetCode"><i class="fa-solid fa-code"></i></a>
+            <a href="mailto:saxenaayush2809@gmail.com" class="btn-icon-glass" title="Email"><i class="bi bi-envelope-fill"></i></a>
+          </div>
+          <p class="text-muted small mb-0 font-code">
+            © 2026 Ayush Saxena. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       RESUME PREVIEW & PRINT MODAL
+       ========================================================================== -->
+  <div class="modal fade modal-glass" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-light d-flex align-items-center gap-2" id="resumeModalLabel">
+            <i class="bi bi-file-earmark-text-fill text-info"></i> Ayush Saxena — Official Resume
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <!-- Printable Clean Resume Document -->
+          <div class="resume-preview-sheet resume-printable-area" id="resumePrintableSheet">
+            <div class="text-center mb-4">
+              <h2 class="fw-bold mb-1">AYUSH SAXENA</h2>
+              <p class="text-muted mb-2 fw-medium">B.Tech CSE (AI &amp; ML) | Python &amp; Django Developer</p>
+              <p class="small text-secondary mb-0">
+                <a href="mailto:saxenaayush2809@gmail.com" class="text-decoration-none text-dark">saxenaayush2809@gmail.com</a> | 
+                <span>+91 9528055151</span> | 
+                <a href="https://www.linkedin.com/in/ayush-saxena-2809s/" target="_blank" class="text-decoration-none text-dark">LinkedIn</a> | 
+                <a href="https://github.com/Ayush2809-tech" target="_blank" class="text-decoration-none text-dark">GitHub</a> | 
+                <a href="https://leetcode.com/u/Ayush2815" target="_blank" class="text-decoration-none text-dark">LeetCode</a> | 
+                <span>Greater Noida, Uttar Pradesh, India</span>
+              </p>
+            </div>
+
+            <!-- Summary -->
+            <p class="small text-muted mb-3">
+              Pre-final year B.Tech Computer Science and Engineering (Artificial Intelligence &amp; Machine Learning) student with hands-on experience in Python, Django, web development, and software project development. Experienced in building and deploying production-ready web applications and strengthening problem-solving skills through Java and Data Structures &amp; Algorithms.
+            </p>
+
+            <!-- Experience -->
+            <h3>INTERNSHIP</h3>
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-start">
+                <span class="resume-sub">Software Development Intern | Softpro India Computer Technologies Pvt. Ltd., Lucknow</span>
+                <span class="resume-date">Jun 2026 – Jul 2026</span>
+              </div>
+              <ul class="small mb-0 ps-3 mt-1 text-secondary">
+                <li>Completed a 45-day Summer Internship in Python with Django, achieving an <strong>A++ grade</strong>.</li>
+                <li>Developed Online Admission System for Biotech Park, Lucknow, working with the Software Development &amp; Testing Division on a client-side project using Python and Django.</li>
+              </ul>
+            </div>
+
+            <!-- Key Expertise -->
+            <h3>KEY EXPERTISE</h3>
+            <div class="small mb-3 text-secondary">
+              <p class="mb-1"><strong>TECHNICAL SKILLS:</strong> Languages: Python, Java, JavaScript, HTML, CSS, SQL</p>
+              <p class="mb-1"><strong>Frameworks:</strong> Django, Bootstrap</p>
+              <p class="mb-1"><strong>Tools:</strong> Git, GitHub, VS Code</p>
+              <p class="mb-1"><strong>Platforms:</strong> Render, GitHub Pages, Netlify</p>
+              <p class="mb-0"><strong>Core Areas:</strong> Data Structures &amp; Algorithms, Web Development, AI/ML Fundamentals, Database Management.</p>
+            </div>
+
+            <!-- Projects -->
+            <h3>PROJECTS</h3>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between">
+                <span class="resume-sub">1. Aurelix – Student Management System</span>
+                <span class="small text-muted">Django | PostgreSQL | Cloudinary | Render</span>
+              </div>
+              <p class="small text-muted mb-1">
+                <a href="https://github.com/Ayush2809-tech/Aurelix" target="_blank">GitHub Repository</a> | 
+                <a href="https://aurelix-9q4e.onrender.com" target="_blank">Live Demo</a>
+              </p>
+              <ul class="small mb-2 ps-3 text-secondary">
+                <li>Developed and production-deployed a Django-based Student Management System with role-based access for school owners and teachers, student/class/teacher management, and secure authentication.</li>
+                <li>Integrated PostgreSQL, Cloudinary, Brevo, Excel import/export, Render deployment, and SEO configuration.</li>
+              </ul>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between">
+                <span class="resume-sub">2. Online Admission System – Biotech Park, Lucknow | Softpro India</span>
+                <span class="small text-muted">Python | Django | SQL</span>
+              </div>
+              <p class="small text-muted mb-1">
+                <a href="https://github.com/Ayush2809-tech/BTech-Park-Admission-System" target="_blank">GitHub Repository</a>
+              </p>
+              <ul class="small mb-0 ps-3 text-secondary">
+                <li>Developed an online admission management system using Python and Django as part of a 45-day Summer Internship at Softpro India.</li>
+                <li>Implemented student registration, document handling, course enrollment, fee/payment tracking, and administrative management.</li>
+              </ul>
+            </div>
+
+            <!-- Leadership -->
+            <h3>LEADERSHIP</h3>
+            <div class="mb-3">
+              <span class="resume-sub">Social Media Co-Head | Aarohan Coding Club</span>
+              <ul class="small mb-0 ps-3 mt-1 text-secondary">
+                <li>Served as Social Media Co-Head of Aarohan Coding Club, contributing to the planning and promotion of technical activities and college initiatives.</li>
+                <li>Managed social-media-oriented activities and collaborated with the team to improve visibility and engagement.</li>
+              </ul>
+            </div>
+
+            <!-- Achievements -->
+            <h3>ACHIEVEMENTS</h3>
+            <ul class="small mb-3 ps-3 text-secondary">
+              <li><strong>Best Speaker Award</strong> | Softpro India Computer Technologies Pvt. Ltd. | 2026 — Recognized for performance during the Summer Internship.</li>
+              <li><strong>Top 1,000 Teams</strong> | Vibe Hacks | HackWithIndia | 2026 — Ranked among the top 1,000 teams out of 3,000 participating teams.</li>
+            </ul>
+
+            <!-- Education -->
+            <h3>EDUCATION</h3>
+            <div class="small mb-2 text-secondary">
+              <div class="d-flex justify-content-between">
+                <strong>Dronacharya Group of Institutions | Dr. A. P. J. Abdul Kalam Technical University (AKTU)</strong>
+                <span class="resume-date">2024 – 2028</span>
+              </div>
+              <div>B.Tech – Computer Science &amp; Engineering (AI &amp; ML) | <strong>CGPA: 8.03/10</strong></div>
+            </div>
+            <div class="small mb-1 text-secondary">
+              <div class="d-flex justify-content-between">
+                <strong>Saraswati Vidya Mandir Inter College | UP Board</strong>
+                <span class="resume-date">2023</span>
+              </div>
+              <div>Grade 12th – Senior Secondary: <strong>81.2%</strong></div>
+            </div>
+            <div class="small mb-3 text-secondary">
+              <div class="d-flex justify-content-between">
+                <strong>Saraswati Vidya Mandir Inter College | UP Board</strong>
+                <span class="resume-date">2021</span>
+              </div>
+              <div>Grade 10th – Secondary: <strong>90.5%</strong></div>
+            </div>
+
+            <!-- Certifications -->
+            <h3>CERTIFICATIONS</h3>
+            <ul class="small mb-0 ps-3 text-secondary">
+              <li>Python Programming | EdLernity | 2025</li>
+              <li>Basics of ChatGPT | EdLernity | 2025</li>
+              <li>Basics of Data Structures and Algorithms | 2025</li>
+              <li>Summer Internship – Python with Django | Softpro India Computer Technologies Pvt. Ltd. | 2026 | <strong>Grade A++</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn-glow-primary py-2 px-4" onclick="printResume()">
+            <i class="bi bi-printer-fill"></i> Print / Save PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       PROJECT DETAILS MODAL
+       ========================================================================== -->
+  <div class="modal fade modal-glass" id="projectDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-light" id="projectModalTitle">Project Details</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="projectModalBody">
+          <!-- Dynamic Content Injected via JS -->
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="projectModalGithub" target="_blank" class="btn-glass-secondary py-2 px-3">
+            <i class="bi bi-github"></i> GitHub Repo
+          </a>
+          <a href="#" id="projectModalLive" target="_blank" class="btn-glow-primary py-2 px-3">
+            <i class="bi bi-box-arrow-up-right"></i> Live App
+          </a>
+          <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notification -->
+  <div class="custom-toast" id="custom-global-toast">
+    <span class="toast-text"></span>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Custom Portfolio Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
