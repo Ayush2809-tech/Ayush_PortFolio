@@ -23,135 +23,168 @@ function initThreeBackground() {
   const container = document.getElementById('three-canvas-container');
   if (!container || typeof THREE === 'undefined') return;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  container.appendChild(renderer.domElement);
-
-  // Particles Setup
-  const particleCount = window.innerWidth < 768 ? 600 : 1200;
-  const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const colors = new Float32Array(particleCount * 3);
-
-  const baseColor = new THREE.Color('#00f2fe');
-  const secondColor = new THREE.Color('#7928ca');
-
-  for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = (Math.random() - 0.5) * 20;
-    positions[i + 1] = (Math.random() - 0.5) * 20;
-    positions[i + 2] = (Math.random() - 0.5) * 20;
-
-    const mixedColor = baseColor.clone().lerp(secondColor, Math.random());
-    colors[i] = mixedColor.r;
-    colors[i + 1] = mixedColor.g;
-    colors[i + 2] = mixedColor.b;
+  // WebGL Availability & Context Guard
+  function isWebGLAvailable() {
+    try {
+      const testCanvas = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl')));
+    } catch (e) {
+      return false;
+    }
   }
 
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-  // Custom soft particle point texture
-  const canvas = document.createElement('canvas');
-  canvas.width = 16;
-  canvas.height = 16;
-  const ctx = canvas.getContext('2d');
-  const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
-  gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-  gradient.addColorStop(0.3, 'rgba(0, 242, 254, 0.8)');
-  gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, 16, 16);
-  const texture = new THREE.CanvasTexture(canvas);
-
-  const material = new THREE.PointsMaterial({
-    size: 0.12,
-    vertexColors: true,
-    map: texture,
-    transparent: true,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false
-  });
-
-  const particleSystem = new THREE.Points(geometry, material);
-  scene.add(particleSystem);
-
-  // Geometric floating wireframe octahedron in 3D space
-  const octaGeometry = new THREE.OctahedronGeometry(2.4, 1);
-  const octaMaterial = new THREE.MeshBasicMaterial({
-    color: 0x00f2fe,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.15
-  });
-  const floatingShape = new THREE.Mesh(octaGeometry, octaMaterial);
-  floatingShape.position.set(4, 1, -4);
-  scene.add(floatingShape);
-
-  // Geometric icosahedron
-  const icoGeometry = new THREE.IcosahedronGeometry(1.8, 1);
-  const icoMaterial = new THREE.MeshBasicMaterial({
-    color: 0x7928ca,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.12
-  });
-  const floatingIco = new THREE.Mesh(icoGeometry, icoMaterial);
-  floatingIco.position.set(-5, -2, -3);
-  scene.add(floatingIco);
-
-  camera.position.z = 7;
-
-  // Mouse interaction
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetX = 0;
-  let targetY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
-
-  // Animation Loop
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    const elapsedTime = clock.getElapsedTime();
-
-    targetX += (mouseX - targetX) * 0.05;
-    targetY += (mouseY - targetY) * 0.05;
-
-    particleSystem.rotation.y = elapsedTime * 0.03 + targetX * 0.3;
-    particleSystem.rotation.x = elapsedTime * 0.01 + targetY * 0.2;
-
-    floatingShape.rotation.x = elapsedTime * 0.15;
-    floatingShape.rotation.y = elapsedTime * 0.2;
-    floatingShape.position.y = 1 + Math.sin(elapsedTime * 0.8) * 0.4;
-
-    floatingIco.rotation.x = -elapsedTime * 0.12;
-    floatingIco.rotation.y = -elapsedTime * 0.18;
-    floatingIco.position.y = -2 + Math.cos(elapsedTime * 0.7) * 0.3;
-
-    camera.position.x += (targetX * 0.8 - camera.position.x) * 0.05;
-    camera.position.y += (-targetY * 0.8 - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
-
-    renderer.render(scene, camera);
+  if (!isWebGLAvailable()) {
+    console.info('WebGL not supported or disabled. Falling back to ambient CSS gradients.');
+    return;
   }
 
-  animate();
+  try {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
 
-  // Resize Handler
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // Responsive Particle Count Optimization
+    const particleCount = window.innerWidth < 768 ? 400 : (window.innerWidth < 1200 ? 750 : 1100);
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+
+    const baseColor = new THREE.Color('#00f2fe');
+    const secondColor = new THREE.Color('#7928ca');
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 20;
+      positions[i + 1] = (Math.random() - 0.5) * 20;
+      positions[i + 2] = (Math.random() - 0.5) * 20;
+
+      const mixedColor = baseColor.clone().lerp(secondColor, Math.random());
+      colors[i] = mixedColor.r;
+      colors[i + 1] = mixedColor.g;
+      colors[i + 2] = mixedColor.b;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    // Custom soft particle point texture
+    const canvas = document.createElement('canvas');
+    canvas.width = 16;
+    canvas.height = 16;
+    const ctx = canvas.getContext('2d');
+    const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    gradient.addColorStop(0.3, 'rgba(0, 242, 254, 0.8)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 16, 16);
+    const texture = new THREE.CanvasTexture(canvas);
+
+    const material = new THREE.PointsMaterial({
+      size: 0.12,
+      vertexColors: true,
+      map: texture,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    const particleSystem = new THREE.Points(geometry, material);
+    scene.add(particleSystem);
+
+    // Geometric floating wireframe octahedron in 3D space
+    const octaGeometry = new THREE.OctahedronGeometry(2.4, 1);
+    const octaMaterial = new THREE.MeshBasicMaterial({
+      color: 0x00f2fe,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15
+    });
+    const floatingShape = new THREE.Mesh(octaGeometry, octaMaterial);
+    floatingShape.position.set(4, 1, -4);
+    scene.add(floatingShape);
+
+    // Geometric icosahedron
+    const icoGeometry = new THREE.IcosahedronGeometry(1.8, 1);
+    const icoMaterial = new THREE.MeshBasicMaterial({
+      color: 0x7928ca,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.12
+    });
+    const floatingIco = new THREE.Mesh(icoGeometry, icoMaterial);
+    floatingIco.position.set(-5, -2, -3);
+    scene.add(floatingIco);
+
+    camera.position.z = 7;
+
+    // Mouse interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    // Animation Loop with Visibility Battery Optimization
+    const clock = new THREE.Clock();
+    let animationFrameId = null;
+    let isPageVisible = true;
+
+    function animate() {
+      if (!isPageVisible) return;
+      animationFrameId = requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      particleSystem.rotation.y = elapsedTime * 0.03 + targetX * 0.3;
+      particleSystem.rotation.x = elapsedTime * 0.01 + targetY * 0.2;
+
+      floatingShape.rotation.x = elapsedTime * 0.15;
+      floatingShape.rotation.y = elapsedTime * 0.2;
+      floatingShape.position.y = 1 + Math.sin(elapsedTime * 0.8) * 0.4;
+
+      floatingIco.rotation.x = -elapsedTime * 0.12;
+      floatingIco.rotation.y = -elapsedTime * 0.18;
+      floatingIco.position.y = -2 + Math.cos(elapsedTime * 0.7) * 0.3;
+
+      camera.position.x += (targetX * 0.8 - camera.position.x) * 0.05;
+      camera.position.y += (-targetY * 0.8 - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Tab visibility handling (pauses render loop when tab is hidden)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        isPageVisible = false;
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      } else {
+        isPageVisible = true;
+        animate();
+      }
+    });
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }, { passive: true });
+  } catch (error) {
+    console.warn('WebGL background initialization gracefully bypassed:', error);
+  }
 }
 
 /* ==========================================================================
@@ -208,6 +241,10 @@ function initTypewriter() {
    3. 3D CARD TILT & RADIAL MOUSE GLOW
    ========================================================================== */
 function initTiltCards() {
+  // Only enable 3D tilt on devices with hover/pointer capability (prevents touch scroll lag)
+  const hasPointerHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!hasPointerHover) return;
+
   const cards = document.querySelectorAll('.tilt-card');
   if (!cards.length) return;
 
@@ -227,7 +264,7 @@ function initTiltCards() {
 
       // Subtle dynamic mouse-following glow
       card.style.background = `radial-gradient(circle 200px at ${x}px ${y}px, rgba(0, 242, 254, 0.12), rgba(18, 26, 47, 0.6))`;
-    });
+    }, { passive: true });
 
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
