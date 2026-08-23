@@ -583,32 +583,71 @@ function initNavbarScroll() {
   const navbar = document.querySelector('.custom-navbar');
   const navLinks = document.querySelectorAll('.nav-link-custom');
   const sections = document.querySelectorAll('section[id]');
+  const offcanvasEl = document.getElementById('navbarOffcanvas');
+
+  // Handle all smooth-scrolling anchor links across navbar and buttons
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        e.preventDefault();
+
+        // Calculate offset position for sticky navbar
+        const navHeight = navbar ? navbar.offsetHeight : 80;
+        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - (navHeight + 10);
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+
+        // Close mobile offcanvas if open
+        if (offcanvasEl && typeof bootstrap !== 'undefined') {
+          const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+          if (bsOffcanvas) {
+            bsOffcanvas.hide();
+          }
+        }
+
+        // Update active class
+        navLinks.forEach(l => l.classList.remove('active'));
+        if (this.classList.contains('nav-link-custom')) {
+          this.classList.add('active');
+        }
+      }
+    });
+  });
 
   window.addEventListener('scroll', () => {
     // Sticky navbar glow
     if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
+      navbar?.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      navbar?.classList.remove('scrolled');
     }
 
     // Scroll spy
     let current = '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
+      const sectionTop = section.offsetTop - 130;
       const sectionHeight = section.offsetHeight;
       if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
         current = section.getAttribute('id');
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+    if (current) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  }, { passive: true });
 }
 
 /* ==========================================================================
