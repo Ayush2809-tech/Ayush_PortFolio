@@ -308,29 +308,37 @@ let audioCtx = null;
 let soundEnabled = false;
 
 function initAudioFX() {
-  const toggleBtn = document.getElementById('audio-toggle-btn');
-  if (!toggleBtn) return;
+  const audioButtons = document.querySelectorAll('.audio-toggle-action');
+  if (!audioButtons.length) return;
 
-  toggleBtn.addEventListener('click', () => {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    soundEnabled = !soundEnabled;
-    toggleBtn.classList.toggle('active', soundEnabled);
-    toggleBtn.innerHTML = soundEnabled 
-      ? '<i class="bi bi-volume-up-fill"></i>' 
-      : '<i class="bi bi-volume-mute-fill"></i>';
+  function updateAudioButtonsState() {
+    audioButtons.forEach(btn => {
+      btn.classList.toggle('active', soundEnabled);
+      btn.innerHTML = soundEnabled 
+        ? '<i class="bi bi-volume-up-fill"></i><span class="visually-hidden">Mute Sound FX</span>' 
+        : '<i class="bi bi-volume-mute-fill"></i><span class="visually-hidden">Enable Sound FX</span>';
+    });
+  }
 
-    if (soundEnabled) {
-      playSynthSound('success');
-      showToast('🔊 Sound FX Enabled!');
-    } else {
-      showToast('🔇 Sound FX Muted');
-    }
+  audioButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      soundEnabled = !soundEnabled;
+      updateAudioButtonsState();
+
+      if (soundEnabled) {
+        playSynthSound('success');
+        showToast('🔊 Sound FX Enabled!');
+      } else {
+        showToast('🔇 Sound FX Muted');
+      }
+    });
   });
 
   // Attach hover sounds to interactive elements
-  const interactives = document.querySelectorAll('.btn-glow-primary, .btn-glass-secondary, .filter-btn, .coding-profile-card, .nav-link-custom');
+  const interactives = document.querySelectorAll('.btn-glow-primary, .btn-glass-secondary, .filter-btn, .coding-profile-card, .nav-link-custom, .footer-nav-link');
   interactives.forEach(elem => {
     elem.addEventListener('mouseenter', () => {
       if (soundEnabled) playSynthSound('hover');
@@ -407,7 +415,6 @@ function initProjectFilters() {
       projectCards.forEach(card => {
         if (filterValue === 'all' || card.dataset.category.includes(filterValue)) {
           card.style.display = 'block';
-          card.classList.add('animate__fadeIn');
         } else {
           card.style.display = 'none';
         }
@@ -563,13 +570,13 @@ function initCopyHelpers() {
       if (!textToCopy) return;
 
       navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="bi bi-check-lg text-success"></i> Copied!';
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-check-lg text-success"></i><span class="visually-hidden">Copied</span>';
         showToast(`📋 Copied "${textToCopy}" to clipboard!`);
         playSynthSound('blip');
 
         setTimeout(() => {
-          btn.innerHTML = originalText;
+          btn.innerHTML = originalHtml;
         }, 2200);
       });
     });
@@ -577,7 +584,7 @@ function initCopyHelpers() {
 }
 
 /* ==========================================================================
-   9. NAVBAR SCROLL & ACTIVE LINK SPY
+   9. NAVBAR SCROLL, ACTIVE LINK SPY & SMOOTH NAVIGATION
    ========================================================================== */
 function initNavbarScroll() {
   const navbar = document.querySelector('.custom-navbar');
@@ -585,7 +592,7 @@ function initNavbarScroll() {
   const sections = document.querySelectorAll('section[id]');
   const offcanvasEl = document.getElementById('navbarOffcanvas');
 
-  // Handle all smooth-scrolling anchor links across navbar and buttons
+  // Handle all smooth-scrolling anchor links across navbar, footer and buttons
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
