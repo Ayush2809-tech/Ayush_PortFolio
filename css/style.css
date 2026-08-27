@@ -470,6 +470,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .audio-toggle-btn.active {
@@ -1683,6 +1684,30 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive adjustments */
 @media (max-width: 991px) {
+  .navbar-toggler {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 242, 254, 0.25) !important;
+  }
+  .navbar-nav .nav-link-custom {
+    padding: 12px 14px !important;
+    font-size: 1rem;
+  }
+  .project-footer .btn-glow-primary,
+  .project-footer .btn-glass-secondary {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
   .hero-section {
     padding: 120px 0 60px;
     text-align: center;
