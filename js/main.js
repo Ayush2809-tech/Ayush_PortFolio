@@ -339,11 +339,14 @@ function initAudioFX() {
   });
 
   // Attach hover sounds to interactive elements
-  const interactives = document.querySelectorAll('.btn-glow-primary, .btn-glass-secondary, .filter-btn, .coding-profile-card, .nav-link-custom, .footer-nav-link');
+  const interactives = document.querySelectorAll('.btn-glow-primary, .btn-glass-secondary, .filter-btn, .coding-profile-card, .nav-link-custom, .footer-nav-link, .btn-icon-glass, .audio-toggle-action, .navbar-toggler');
   interactives.forEach(elem => {
     elem.addEventListener('mouseenter', () => {
       if (soundEnabled) playSynthSound('hover');
     });
+    elem.addEventListener('touchstart', () => {
+      if (soundEnabled) playSynthSound('hover');
+    }, { passive: true });
     elem.addEventListener('click', () => {
       if (soundEnabled) playSynthSound('click');
     });
@@ -426,7 +429,9 @@ function initProjectFilters() {
 
 // Project Details Dynamic Modal Populator
 window.openProjectDetails = function(projectId) {
-  const modal = new bootstrap.Modal(document.getElementById('projectDetailsModal'));
+  const modalElement = document.getElementById('projectDetailsModal');
+  if (!modalElement || typeof bootstrap === 'undefined' || !bootstrap.Modal) return;
+  const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
   const title = document.getElementById('projectModalTitle');
   const body = document.getElementById('projectModalBody');
   const githubLink = document.getElementById('projectModalGithub');
@@ -613,8 +618,8 @@ function initNavbarScroll() {
         });
 
         // Close mobile offcanvas if open
-        if (offcanvasEl && typeof bootstrap !== 'undefined') {
-          const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+        if (offcanvasEl && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+          const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
           if (bsOffcanvas) {
             bsOffcanvas.hide();
           }
