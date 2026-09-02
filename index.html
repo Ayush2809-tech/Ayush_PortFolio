@@ -59,7 +59,7 @@
        ========================================================================== -->
   <nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="main-nav">
     <div class="container">
-      <a class="brand-logo" href="#hero">
+      <a class="brand-logo" href="#hero" aria-label="Go to home section">
         <img src="assets/profile.jpg" alt="Ayush Saxena profile" class="brand-avatar">
         <span>Ayush <span class="text-gradient">Saxena</span></span>
       </a>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="offcanvas-body">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 nav-menu-list">
             <li class="nav-item"><a class="nav-link nav-link-custom active" href="#hero">Home</a></li>
             <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience">Experience</a></li>
@@ -96,11 +96,9 @@
             <li class="nav-item"><a class="nav-link nav-link-custom" href="#achievements">Certifications</a></li>
             <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
           </ul>
-
-          <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 mt-4 mt-lg-0 nav-utility-stack">
-            <!-- Theme Glow Dots -->
-            <div class="d-flex align-items-center gap-2">
-              <span class="text-muted small font-code d-lg-none">THEME:</span>
+          <div class="nav-utility-stack mt-4 mt-lg-0">
+            <div class="nav-theme-section">
+              <span class="nav-utility-label">Theme</span>
               <div class="theme-selector" title="Choose Glow Accent">
                 <button type="button" class="theme-dot dot-cyan active" data-theme="cyan" aria-label="Cyber Cyan Theme"></button>
                 <button type="button" class="theme-dot dot-purple" data-theme="purple" aria-label="Neon Purple Theme"></button>
@@ -108,13 +106,11 @@
               </div>
             </div>
 
-            <!-- Audio FX Toggle (Desktop) -->
             <button type="button" class="audio-toggle-btn audio-toggle-action d-none d-lg-flex" aria-label="Toggle Sound FX" title="Toggle Sound FX">
               <i class="bi bi-volume-mute-fill"></i>
               <span class="visually-hidden">Toggle Sound FX</span>
             </button>
 
-            <!-- Resume Button -->
             <button type="button" class="btn-glow-primary py-2 px-3 fs-6 nav-resume-btn" data-bs-toggle="modal" data-bs-target="#resumeModal">
               <i class="bi bi-file-earmark-person-fill"></i> Resume
             </button>
